@@ -143,6 +143,9 @@ class TwitterBootstrapFormFor::FormBuilder < ActionView::Helpers::FormBuilder
       label       = args.first.nil? ? '' : args.shift
       target      = self.object_name.to_s + '_' + attribute.to_s
       label_attrs = toggle == :check_box ? { :for => target } : {}
+      label_class = args.last.delete(:label_class)
+      label_attrs.merge!(:class => label_class) if label_class 
+
 
       template.concat template.content_tag(:label, label_attrs) {
         template.concat super(attribute, *args)
