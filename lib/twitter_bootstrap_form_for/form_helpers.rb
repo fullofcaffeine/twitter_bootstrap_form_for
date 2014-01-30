@@ -17,7 +17,8 @@ module TwitterBootstrapFormFor::FormHelpers
           options[:html] = {:role => 'form'}
           options[:html][:class] = "form-#{options[:layout]}" if options[:layout] != 'vertical'
         end
-        options[:builder]  = TwitterBootstrapFormFor::FormBuilder
+
+        options[:builder] ||= self.class
 
         # call the original method with our overridden options
         _override_field_error_proc do
